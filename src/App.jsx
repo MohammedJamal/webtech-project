@@ -1,24 +1,19 @@
-import React from "react";
-import Landing from "./pages/Landing";
-import Navbar from "./components/Navbar";
+import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
+import Landing from "./pages/Landing";
+import NotFound from "./pages/NotFound";
+const Navbar = React.lazy(() => import("./components/Navbar"));
+
 function App() {
   return (
     <>
-      <Navbar />
-      <div className="p-6">
-        <Routes>
-          <Route index element={<Landing />} />
-          <Route
-            path="*"
-            element={
-              <>
-                <p>404 Page not found</p>
-              </>
-            }
-          />
-        </Routes>
-      </div>
+      <Suspense fallback={<div className="py-12 w-full bg-slate-50" />}>
+        <Navbar />
+      </Suspense>
+      <Routes>
+        <Route index element={<Landing />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   );
 }

@@ -25,9 +25,9 @@ const Navbar = () => {
       <div
         className={`${
           scrollAmount > 40
-            ? "px-3 py-2 lg:px-6 lg:py-3"
-            : "px-3 py-2 lg:px-6 lg:py-5"
-        } flex justify-between  bg-white shadow sticky z-30 w-full top-0 duration-100`}
+            ? "px-3 py-2 lg:px-6 lg:py-3 shadow bg-white"
+            : "px-3 py-2 lg:px-6 lg:py-5 bg-slate-200"
+        } flex justify-between   sticky z-30 w-full top-0 duration-100`}
       >
         <div className="flex flex-row-reverse lg:flex-row items-center gap-x-2 lg:gap-x-6">
           <Icon />
@@ -104,7 +104,7 @@ const Navigator = () => {
           </li>
           <li className="flex items-center">
             <Link
-              onClick={close}
+              onClick={closeNav}
               className="w-full p-3 lg:p-0 text-center"
               to="/contact"
             >
@@ -135,6 +135,7 @@ const Navigator = () => {
 };
 
 const SubCategory = () => {
+  const { closeNav } = useContext(NavContext);
   const { isToggleSubNav, togglerSubNav } = useContext(SubnavContext);
   return (
     <>
@@ -145,10 +146,13 @@ const SubCategory = () => {
             : "invisible opacity-0 -translate-y-4"
         } max-h-[20em] overflow-y-auto lg:max-h-screen lg:overflow-y-visible absolute top-10 lg:top-8 w-full lg:w-auto left-1/2 -translate-x-1/2 bg-gray-50 lg:rounded-md shadow-md border border-gray-200 transition-all duration-200 overflow-hidden`}
       >
-        {carType.map((carType, i) => {
+        {carType.map((carType) => {
           return (
             <li
-              onClick={togglerSubNav}
+              onClick={() => {
+                togglerSubNav();
+                closeNav();
+              }}
               key={carType}
               className="hover:bg-slate-200 cursor-pointer odd:bg-white even:bg-gray-50 px-4 py-2 text-sm lg:min-w-[20em] flex justify-between items-center duration-100"
             >
@@ -164,6 +168,7 @@ const SubCategory = () => {
 
 const Search = () => {
   const { closeNav } = useContext(NavContext);
+  const scrollAmount = useScroll();
 
   return (
     <div className="relative" onClick={closeNav}>
@@ -171,7 +176,9 @@ const Search = () => {
         type="text"
         name="search"
         placeholder="ค้นหา"
-        className="bg-[#ECEFF1] text-sm lg:text-base rounded-full pl-8 p-2 lg:pr-4 lg:py-2 outline-none w-32 lg:w-44 text-[#546E7A]"
+        className={`${
+          scrollAmount > 40 ? "bg-[#ECEFF1] " : "bg-white"
+        } text-sm lg:text-base rounded-full pl-8 p-2 lg:pr-4 lg:py-2 outline-none w-32 lg:w-44 text-[#546E7A] transition-all duration-100`}
       />
       <HiOutlineSearch className="absolute text-sm top-1/2 left-3 transform -translate-y-1/2 pointer-events-none text-[#546E7A]" />
     </div>
