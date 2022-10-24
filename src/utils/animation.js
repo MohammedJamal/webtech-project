@@ -14,7 +14,7 @@ export const testlaAnimation = () => {
     });
 
     tl.from("#tesla", {
-        yPercent: 40,
+        yPercent: 50,
         scale: 0.95,
         filter: "blur(5px)"
     }).from("img[alt='testla-bg-1']", {
