@@ -7,7 +7,7 @@ export const testlaAnimation = () => {
         scrollTrigger: {
             trigger: "#tesla-section",
             start: "top 80%",
-            end: "20% 50%",
+            end: "35% 50%",
             markers: false,
             scrub: true
         }
@@ -20,10 +20,12 @@ export const testlaAnimation = () => {
     }).from("img[alt='testla-bg-1']", {
         yPercent: 50,
         xPercent: -5,
+        opacity:0,
         skewX:10
     }, "<0.1").from("img[alt='testla-bg-2']", {
         yPercent: 30,
         xPercent: 5,
+        opacity:0,
         skewX:-10
     }, "<0.1")
 

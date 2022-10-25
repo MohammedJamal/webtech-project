@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import NotFound from "./pages/NotFound";
+import Cart from "./pages/Cart";
 const Navbar = React.lazy(() => import("./components/Navbar"));
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       </Suspense>
       <Routes>
         <Route index element={<Landing />} />
+        <Route path="cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

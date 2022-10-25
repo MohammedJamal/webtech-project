@@ -45,7 +45,7 @@ const GalleryTopic = ({ topic, routePath }) => (
         <h2>{topic}</h2>
         <HiChevronRight className="text-3xl" />
       </div>
-      <h3>จำนวน: 12</h3>
+      <h4 className="self-end">จำนวน: 12</h4>
     </div>
   </Link>
 );

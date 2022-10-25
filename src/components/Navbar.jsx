@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   HiChevronDown,
   HiChevronRight,
   HiOutlineSearch,
   HiMenu,
+  HiOutlineShoppingBag,
 } from "react-icons/hi";
 import carType from "../assets/carType.json"; // ประเภทรถ
 import { useScroll } from "../hooks/"; // Custom hooks
+import IconButton from "@mui/material/IconButton";
+import ButtonBase from "@mui/material/ButtonBase";
+import Badge from "@mui/material/Badge";
 
 const NavContext = React.createContext();
 
@@ -25,8 +29,8 @@ const Navbar = () => {
       <div
         className={`${
           scrollAmount > 40
-            ? "px-3 py-2 lg:px-6 lg:py-3 shadow bg-white"
-            : "px-3 py-2 lg:px-6 lg:py-5 bg-slate-200"
+            ? "px-3 py-1 lg:px-6 lg:py-2 shadow bg-white"
+            : "px-3 py-2 lg:px-6 lg:py-4 bg-slate-200"
         } flex justify-between   sticky z-30 w-full top-0 duration-100`}
       >
         <div className="flex flex-row-reverse lg:flex-row items-center gap-x-2 lg:gap-x-6">
@@ -34,8 +38,9 @@ const Navbar = () => {
           <Divider />
           <Navigator />
         </div>
-        <div className="ml-auto">
+        <div className="ml-auto flex items-center space-x-2">
           <Search />
+          <Basket />
         </div>
       </div>
       <BackdropCloseNav />
@@ -72,25 +77,27 @@ const Navigator = () => {
         <ul
           className={`${
             isOpen ? "left-0 " : "-left-full"
-          } fixed z-20 top-0 w-full sm:w-2/3 lg:w-auto bg-white bottom-0 lg:static flex flex-col lg:flex-row lg:bg-transparent items-stretch lg:items-center lg:space-x-6 transition-all duration-300 ease-in-out divide-y lg:divide-y-0 sm:border-r lg:border-none border-gray-300`}
+          } fixed z-20 top-0 w-full sm:w-2/3 lg:w-auto bg-white bottom-0 lg:static flex flex-col lg:flex-row lg:bg-transparent items-stretch lg:items-center transition-all duration-300 ease-in-out divide-y lg:divide-y-0 sm:border-r lg:border-none border-gray-300`}
         >
           {/* Turn to be a drawer */}
           <li className="flex">
             <Link
               onClick={closeNav}
-              className="w-full p-3 lg:p-0 text-center"
+              className="block w-full lg:p-0 text-center"
               to="/"
             >
-              หน้าหลัก
+              <ButtonBase sx={{ padding: "0.5em 1.25em", width: "100%" }}>
+                หน้าหลัก
+              </ButtonBase>
             </Link>
           </li>
           <li className="relative flex items-center justify-center">
             <SubnavContext.Provider
               value={{ isToggleSubNav, setIsToggleSubNav, togglerSubNav }}
             >
-              <button
+              <ButtonBase
                 onClick={togglerSubNav}
-                className="p-3 lg:p-0 flex  justify-center items-center w-full"
+                sx={{ padding: "0.5em 1.25em", width: "100%" }}
               >
                 <span>หมวดหมู่รถยนต์</span>
                 <HiChevronDown
@@ -98,17 +105,20 @@ const Navigator = () => {
                     isToggleSubNav ? "rotate-180" : "rotate-0"
                   } text-lg duration-100`}
                 />
-              </button>
+              </ButtonBase>
+
               <SubCategory />
             </SubnavContext.Provider>
           </li>
           <li className="flex items-center">
             <Link
               onClick={closeNav}
-              className="w-full p-3 lg:p-0 text-center"
+              className="w-full text-center"
               to="/contact"
             >
-              ติดต่อบริการ
+              <ButtonBase sx={{ padding: "0.5em 1.25em", width: "100%" }}>
+                ติดต่อบริการ
+              </ButtonBase>
             </Link>
           </li>
           <li
@@ -144,7 +154,7 @@ const SubCategory = () => {
           isToggleSubNav
             ? "visible opacity-100 translate-y-0"
             : "invisible opacity-0 -translate-y-4"
-        } max-h-[20em] overflow-y-auto lg:max-h-screen lg:overflow-y-visible absolute top-10 lg:top-8 w-full lg:w-auto left-1/2 -translate-x-1/2 bg-gray-50 lg:rounded-md shadow-md border border-gray-200 transition-all duration-200 overflow-hidden`}
+        } max-h-[20em] z-20 overflow-y-auto lg:max-h-screen lg:overflow-y-visible absolute top-10 lg:top-8 w-full lg:w-auto left-1/2 -translate-x-1/2 bg-gray-50 lg:rounded-md shadow-md border border-gray-200 transition-all duration-200 overflow-hidden`}
       >
         {carType.map((carType) => {
           return (
@@ -178,10 +188,23 @@ const Search = () => {
         placeholder="ค้นหา"
         className={`${
           scrollAmount > 40 ? "bg-[#ECEFF1] " : "bg-white"
-        } text-sm lg:text-base rounded-full pl-8 p-2 lg:pr-4 lg:py-2 outline-none w-32 lg:w-44 text-[#546E7A] transition-all duration-100`}
+        } text-sm lg:text-base rounded-full pl-8 p-1 lg:pr-4 lg:py-2 outline-none w-24 lg:w-44 text-[#546E7A] transition-all duration-100`}
       />
       <HiOutlineSearch className="absolute text-sm top-1/2 left-3 transform -translate-y-1/2 pointer-events-none text-[#546E7A]" />
     </div>
+  );
+};
+
+const Basket = () => {
+  const navigate = useNavigate();
+  return (
+    <>
+      <IconButton onClick={() => navigate("/cart")} size="medium">
+        <Badge badgeContent={1} color="primary">
+          <HiOutlineShoppingBag className="text-lg lg:text-2xl text-[#546E7A]" />
+        </Badge>
+      </IconButton>
+    </>
   );
 };
 
