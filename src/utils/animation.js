@@ -6,7 +6,7 @@ export const testlaAnimation = () => {
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: "#tesla-section",
-            start: "top 80%",
+            start: "top 70%",
             end: "35% 50%",
             markers: false,
             scrub: true

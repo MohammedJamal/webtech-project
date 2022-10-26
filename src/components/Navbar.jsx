@@ -13,6 +13,7 @@ import IconButton from "@mui/material/IconButton";
 import ButtonBase from "@mui/material/ButtonBase";
 import Badge from "@mui/material/Badge";
 
+
 const NavContext = React.createContext();
 
 const Navbar = () => {
@@ -29,9 +30,9 @@ const Navbar = () => {
       <div
         className={`${
           scrollAmount > 40
-            ? "px-3 py-1 lg:px-6 lg:py-2 shadow bg-white"
-            : "px-3 py-2 lg:px-6 lg:py-4 bg-slate-200"
-        } flex justify-between   sticky z-30 w-full top-0 duration-100`}
+            ? "px-4 py-1 lg:px-6 lg:py-2 shadow bg-white"
+            : "px-4 py-2 lg:px-6 lg:py-4 bg-slate-200"
+        } flex justify-between sticky z-30 w-full top-0 duration-100`}
       >
         <div className="flex flex-row-reverse lg:flex-row items-center gap-x-2 lg:gap-x-6">
           <Icon />
@@ -71,7 +72,7 @@ const Navigator = () => {
   return (
     <ul className="text-[#546E7A] text-sm lg:text-base flex items-center">
       <li className="block lg:hidden">
-        <HiMenu className="text-lg" onClick={openNav} />
+        <HiMenu className="text-xl" onClick={openNav} />
       </li>
       <li>
         <ul
@@ -200,7 +201,7 @@ const Basket = () => {
   return (
     <>
       <IconButton onClick={() => navigate("/cart")} size="medium">
-        <Badge badgeContent={1} color="primary">
+        <Badge variant="dot" overlap="circular" color="primary">
           <HiOutlineShoppingBag className="text-lg lg:text-2xl text-[#546E7A]" />
         </Badge>
       </IconButton>
