@@ -20,17 +20,43 @@ export const testlaAnimation = () => {
     }).from("img[alt='testla-bg-1']", {
         yPercent: 50,
         xPercent: -5,
-        opacity:0,
-        skewX:10
+        opacity: 0,
+        skewX: 10
     }, "<0.1").from("img[alt='testla-bg-2']", {
         yPercent: 30,
         xPercent: 5,
-        opacity:0,
-        skewX:-10
+        opacity: 0,
+        skewX: -10
     }, "<0.1")
+}
 
+export const navbarAnimation = () => {
+    const tl = gsap.timeline({});
+    tl.pause()
+    const carCategoryMenu = document.getElementById("car-category");
+    const subNavigator = document.getElementById("sub-navigator");
 
+    tl.fromTo("#sub-navigator", {
+        y: -10,
+        duration: 100
+    }, {
+        display: "flex",
+        y: 0,
+        
+    }).to("#sub-navigator", {
+        opacity: 1,
 
+    }, "<")
+
+    carCategoryMenu.addEventListener("mouseenter", () => {
+        tl.play();
+
+    });
+
+    subNavigator.addEventListener("mouseleave", () => {
+        tl.reverse();
+
+    });
 
 
 }
