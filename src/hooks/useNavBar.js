@@ -4,7 +4,7 @@ const useNavBar = (defaultState = false) => {
     const [isNavOpen, setIsNavOpen] = useState(defaultState);
     const openNav = () => setIsNavOpen(true);
     const closeNav = () => setIsNavOpen(false);
-    const toggleNav = () => setIsNavOpen(!toggle);
+    const toggleNav = () => setIsNavOpen(!isNavOpen);
 
     return { openNav, closeNav, toggleNav, isNavOpen }
 }

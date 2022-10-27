@@ -26,16 +26,22 @@ const ReservePrice = () => {
       <div className="flex mt-12 justify-between">
         <FormGroup>
           <FormControlLabel
-            control={<Checkbox  />}
-            label={<p className="select-none text-xs text-gray-400">ข้าพเจ้าได้อ่านเงื่อนไขการจองคิวเพื่อซื้อ/เช่าแล้ว</p>}
+            control={<Checkbox />}
+            label={
+              <p className="select-none text-xs text-gray-400">
+                ข้าพเจ้าได้อ่านเงื่อนไขการจองคิวเพื่อซื้อ/เช่าแล้ว
+              </p>
+            }
             sx={{
               fontFamily: "'Prompt', sans-serif",
               color: "gray",
             }}
           />
         </FormGroup>
-        <ButtonBase >
-          <button className="px-4 py-2 bg-blue-400 text-white rounded">ยืนยันการสั่งจอง</button>
+        <ButtonBase>
+          <div className="px-4 py-2 bg-blue-400 text-white rounded">
+            ยืนยันการสั่งจอง
+          </div>
         </ButtonBase>
       </div>
     </div>

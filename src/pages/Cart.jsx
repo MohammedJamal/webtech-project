@@ -23,7 +23,7 @@ const Cart = () => {
         {/* Car reserve section */}
         <div className="relative">
           <div className="bg-[#FAFAFA] rounded-md">
-            <img src={"/bmwi8.png"} alt={"BMWi*"} className="p-4 " />
+            <img src={"/bmwi8.png"} alt={"BMWi8"} className="p-4 " />
           </div>
           <div className="bg-gradient-to-t from-[#E1E4E7] to-[#FAFAFA] min-h-[20vh]" />
           <EntireDetail />
