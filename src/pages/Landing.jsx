@@ -1,4 +1,4 @@
-import React , { useEffect } from "react";
+import React, { useEffect } from "react";
 import Banner from "../components/Banner";
 import LandingGallery from "../layouts/landing/LandingGallery";
 import SuggestGallery from "../layouts/landing/SuggestGallery";
@@ -7,11 +7,10 @@ import { Link } from "react-router-dom";
 import { testlaAnimation } from "../utils/animation";
 
 const Landing = () => {
-
   useEffect(() => {
-    testlaAnimation()
-  }, [])
-  
+    testlaAnimation();
+  }, []);
+
   return (
     <>
       <Banner />
@@ -59,7 +58,12 @@ const TeslaSection = () => {
       </h2>
       <div className="mt-[10em] px-6 relative">
         {/* Tesla car image */}
-        <img src="/tesla.png" alt="tesla" id="tesla" className="mx-auto mb-12 relative z-10" />
+        <img
+          src="/tesla.png"
+          alt="tesla"
+          id="tesla"
+          className="mx-auto mb-12 relative z-10"
+        />
         <img
           src="/tesla-bg-1.png"
           alt="testla-bg-1"
@@ -78,17 +82,17 @@ const TeslaSection = () => {
         </h1>
         <div className="line" />
       </div>
-      <p className="text-center text-dark-2">
+      <p className="text-sm md:text-base text-center text-dark-2">
         The quickest car in the world, with record-setting acceleration
       </p>
       <div className="my-4 py-12 lg:px-24 tesla-bg">
         <div className="px-10 lg:p-0 flex flex-col lg:flex-row divide-y-2 lg:divide-y-0 lg:divide-x-2 divide-gray-300 max-w-[50em] mx-auto">
-          <p className="w-full text-justify pb-4 lg:pb-0 lg:pr-4 text-dark-2">
+          <p className="w-full text-sm md:text-base md:text-justify pb-4 lg:pb-0 lg:pr-4 text-dark-2">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unknown printer took
           </p>
-          <p className="w-full text-justify pt-4 lg:pt-0 lg:pl-4 text-dark-2">
+          <p className="w-full text-sm md:text-base md:text-justify pt-4 lg:pt-0 lg:pl-4 text-dark-2">
             a galley of type and scrambled it to make a type specimen book. It
             has survived not only five centuries, อ่านต่อ
           </p>
