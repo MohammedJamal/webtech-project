@@ -3,7 +3,7 @@ import { useSearch } from "../../hooks/"; // Custom hooks
 import { HiOutlineSearch } from "react-icons/hi";
 import IconButton from "@mui/material/IconButton";
 import Backdrop from "@mui/material/Backdrop";
-import { searchAnimation} from "../../utils/animation";
+import { searchAnimation } from "../../utils/animation";
 
 const SearchModal = ({ isSearchOpen, closeSearch }) => {
   return (

@@ -35,7 +35,7 @@ const Navbar = () => {
 };
 
 const Divider = () => (
-  <div className="hidden md:block w-[2px] h-3/4 my-auto self-stretch bg-[#B0BEC5] rounded" />
+  <div className="hidden md:block w-[2px] h-3/4 my-auto self-stretch bg-[#B0BEC5]/50 rounded" />
 );
 
 export default React.memo(Navbar);
