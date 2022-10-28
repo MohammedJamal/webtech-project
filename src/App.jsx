@@ -3,14 +3,17 @@ import { Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import NotFound from "./pages/NotFound";
 import Cart from "./pages/Cart";
-import Contact from "./pages/Contact"
+import Contact from "./pages/Contact";
+import NavbarProvider from "./context/NavbarContext";
 const Navbar = React.lazy(() => import("./components/Navbar"));
 
 function App() {
   return (
     <>
       <Suspense fallback={<div className="py-12 w-full bg-slate-50" />}>
-        <Navbar />
+        <NavbarProvider>
+          <Navbar />
+        </NavbarProvider>
       </Suspense>
       <Routes>
         <Route index element={<Landing />} />

@@ -3,7 +3,8 @@ import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 import { HiChevronLeft } from "react-icons/hi";
 
-import EntireDetail  from "../layouts/cart/EntireDetail ";
+/* ================== Import layouts ================== */
+import EntireDetail from "../layouts/cart/EntireDetail ";
 import CarBadge from "../layouts/cart/CarBadge";
 
 const Cart = () => {
@@ -12,12 +13,7 @@ const Cart = () => {
       <Banner />
       <Wrapper>
         <BackToLanding />
-        <h2 className="text-dark-4">
-          ใบยืนยันการสั่งจองและ รายละเอียดเพื่อเข้าดูรถยนต์
-        </h2>
-        <p className="text-dark-1">
-          โปรดยืนยันจ้อมูลการสั่งจองรถยนต์และ ตรวจสอบวันนัดหมายอย่างละเอียด
-        </p>
+        <PageDescribe />
         <CarBadge logoURL="/bugati-icon.png" />
         <hr className="my-4" />
         {/* Car reserve section */}
@@ -34,7 +30,7 @@ const Cart = () => {
 };
 
 const Wrapper = ({ children }) => (
-  <div className="max-w-[60em] mt-10 px-6 mx-auto w-full">{children}</div>
+  <div className="max-w-[60em] mt-10 px-3 md:px-6 mx-auto w-full">{children}</div>
 );
 
 const BackToLanding = () => (
@@ -45,5 +41,18 @@ const BackToLanding = () => (
     </div>
   </Link>
 );
+
+const PageDescribe = () => {
+  return (
+    <>
+      <h2 className="text-dark-4">
+        ใบยืนยันการสั่งจองและ รายละเอียดเพื่อเข้าดูรถยนต์
+      </h2>
+      <p className="text-dark-1">
+        โปรดยืนยันจ้อมูลการสั่งจองรถยนต์และ ตรวจสอบวันนัดหมายอย่างละเอียด
+      </p>
+    </>
+  );
+};
 
 export default Cart;

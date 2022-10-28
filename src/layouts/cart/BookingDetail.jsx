@@ -8,13 +8,13 @@ import {
 import Chip from "@mui/material/Chip";
 
 const Date = () => (
-  <div className="bg-[#F8F8F9] p-4 ">
-    <div className="flex items-center">
-      <div className="flex space-x-2">
+  <div className="bg-[#F8F8F9] py-10 px-4 sm:p-4">
+    <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row items-center">
+      <div className="flex space-x-2 self-start">
         <HiOutlineCalendar className="text-xl" />
         <h4 className="font-normal text-base text-dark-4">วัน/เวลาที่จองคิว</h4>
       </div>
-      <div className="flex items-center space-x-1.5 ml-auto">
+      <div className="flex items-center space-x-1.5 mx-auto sm:ml-auto sm:mr-0">
         <Chip
           variant="outlined"
           icon={<HiOutlineClock className="text-lg" />}
@@ -42,7 +42,7 @@ const Service = () => {
     "รถรับส่งฟรีในระยะทาง 20 กิโลเมตรแรก",
   ];
   return (
-    <div className="bg-[#F8F8F9] p-4 ">
+    <div className="bg-[#F8F8F9] py-10 px-4 p-4 ">
       <div className="flex space-x-2">
         <HiOutlineEmojiHappy className="text-xl" />
         <h4 className="font-normal text-base text-dark-4">
@@ -62,7 +62,7 @@ const Service = () => {
 
 const VerifyNumber = () => {
   return (
-    <div className="bg-[#F8F8F9] p-4 ">
+    <div className="bg-[#F8F8F9]  py-10 px-4 p-4 ">
       <div className="flex space-x-2">
         <HiOutlineShieldCheck className="text-xl" />
         <h4 className="font-normal text-base text-dark-4">หมายเลขยืนยัน</h4>
@@ -77,8 +77,8 @@ const VerifyNumber = () => {
 
 const BookingDetail = () => {
   return (
-    <div className="relative mt-12 border border-gray-300 rounded p-4">
-      <p className="text-gray-500 absolute px-2 bg-white top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div className="relative mt-12 border border-gray-300 rounded p-2 md:p-4">
+      <p className="text-gray-500 absolute sm:px-2 bg-white top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
         รายละเอียดการจองคิว
       </p>
       <div className="flex flex-col space-y-2">

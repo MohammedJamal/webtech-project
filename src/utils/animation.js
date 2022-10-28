@@ -31,8 +31,8 @@ export const testlaAnimation = () => {
 }
 
 export const navbarAnimation = () => {
-    const mediumSizeTl = gsap.timeline({});
-    const smallSizeTl = gsap.timeline({});
+    const mediumSizeTl = gsap.timeline({ delay: 0 });
+    const smallSizeTl = gsap.timeline({ delay: 0 });
     mediumSizeTl.pause()
     smallSizeTl.pause()
 
@@ -42,18 +42,16 @@ export const navbarAnimation = () => {
     mediumSizeTl.fromTo("#sub-navigator", {
         x: 0,
         y: -10,
-        duration: 100
     }, {
         display: "flex",
         y: 0,
         x: 0,
-
     }).to("#sub-navigator", {
         opacity: 1,
+        duration:0.5
     }, "<").fromTo(".carlist-animation", {
-
         opacity: 0,
-        x: 20
+        x: 20,
     }, {
         stagger: 0.01,
         opacity: 1,
@@ -63,7 +61,6 @@ export const navbarAnimation = () => {
     smallSizeTl.fromTo("#sub-navigator", {
         x: 100,
         y: 0,
-        duration: 100,
     }, {
         display: "flex",
         x: 0,
@@ -118,7 +115,7 @@ export const searchAnimation = () => {
     gsap.from("#search", {
         y: 20,
         opacity: 0,
-        scale:0.8,
+        scale: 0.8,
         skewX: "80deg",
     })
 }

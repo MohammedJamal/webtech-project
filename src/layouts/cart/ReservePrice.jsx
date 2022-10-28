@@ -3,10 +3,11 @@ import ButtonBase from "@mui/material/ButtonBase";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+
 const ReservePrice = () => {
   return (
     <div className="p-4 border border-gray-300  mt-4 rounded">
-      <ul className="flex flex-col space-y-2 text-dark-4">
+      <ul className="flex text-sm sm:text-base flex-col space-y-2 text-dark-4">
         <li className="flex justify-between">
           <p>ค่าบริการการจองคิวเพื่อดูรถยนต์</p>
           <p>THB 20,000</p>
@@ -23,8 +24,8 @@ const ReservePrice = () => {
           </div>
         </li>
       </ul>
-      <div className="flex mt-12 justify-between">
-        <FormGroup>
+      <div className="flex flex-col sm:flex-row mt-12 justify-between">
+        <FormGroup sx={{ alignSelf: "center" }}>
           <FormControlLabel
             control={<Checkbox />}
             label={
