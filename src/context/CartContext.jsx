@@ -15,7 +15,7 @@ const CartProvider = ({ children }) => {
         paymentStep: 2,
       }));
     },
-    isModalOpen: true,
+    isModalOpen: false,
     setIsModalOpen: (state) => {
       if (state === false) {
         // reset payment

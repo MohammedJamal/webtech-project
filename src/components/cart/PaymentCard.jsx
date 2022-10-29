@@ -17,7 +17,7 @@ const PaymentCard = ({ name, imgURL, isEnable }) => {
 
   return (
     <div
-      onClick={() => nextStep({name, imgURL})}
+      onClick={() => isEnable ? nextStep({name, imgURL}) : null}
       className={`${
         isEnable
           ? "bg-gray-50 cursor-pointer hover:scale-[1.02] hover:shadow-md"
