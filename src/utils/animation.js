@@ -48,7 +48,7 @@ export const navbarAnimation = () => {
         x: 0,
     }).to("#sub-navigator", {
         opacity: 1,
-        duration:0.5
+        duration: 0.5
     }, "<").fromTo(".carlist-animation", {
         opacity: 0,
         x: 20,
@@ -117,5 +117,19 @@ export const searchAnimation = () => {
         opacity: 0,
         scale: 0.8,
         skewX: "80deg",
+    })
+}
+
+export const modalPageOneAnimation = () => {
+
+    const paymentShowTl = gsap.timeline({
+        delay: 0
+    })
+
+    paymentShowTl.from(".payment-card ", {
+        y: 35,
+        opacity: 0,
+        duration: 1,
+        ease: "expo.out"
     })
 }

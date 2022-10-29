@@ -4,6 +4,17 @@ export const CartContext = React.createContext();
 
 const CartProvider = ({ children }) => {
   const [cartState, setCartState] = useState({
+    creditCard: {
+      name: null,
+      imgURL: null,
+    },
+    setCreditCard: (card) => {
+      setCartState((prevCartState) => ({
+        ...prevCartState,
+        creditCard: card,
+        paymentStep: 2,
+      }));
+    },
     isModalOpen: true,
     setIsModalOpen: (state) => {
       if (state === false) {
@@ -17,11 +28,13 @@ const CartProvider = ({ children }) => {
       }));
     },
     paymentStep: 1,
-    setPaymentStep: (step) =>
+    setPaymentStep: (step) => {
+      if (step > 3) return; // prevent voerstep bug.
       setCartState((prevCartState) => ({
         ...prevCartState,
         paymentStep: step,
-      })),
+      }));
+    },
   });
 
   React.useEffect(() => {
