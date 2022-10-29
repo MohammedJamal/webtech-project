@@ -19,15 +19,8 @@ function App() {
       </Suspense>
       <Routes>
         <Route index element={<Landing />} />
-        <Route
-          path="cart"
-          element={
-            <CartProvider>
-              <Cart />
-            </CartProvider>
-          }
-        />
-        <Route path="contact" element={<Contact />} />
+        <Route path="/cart" element={<CartProvider><Cart /></CartProvider>} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
