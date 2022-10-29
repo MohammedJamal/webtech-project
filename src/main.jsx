@@ -5,9 +5,9 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <div className="min-h-screen h-auto">
+  <div className="min-h-screen h-auto">
+    <BrowserRouter>
       <App />
-    </div>
-  </BrowserRouter>
+    </BrowserRouter>
+  </div>
 );
