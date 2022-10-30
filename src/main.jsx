@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import Layout from "./layouts/Layout";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 /* ============ pages ============ */
 import Landing from "./pages/Landing";
 import Cart from "./pages/Cart";
@@ -10,7 +10,7 @@ import CartProvider from "./context/CartContext";
 import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Layout />, // All page will render as children of Layout
