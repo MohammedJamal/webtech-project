@@ -24,7 +24,7 @@ const CartModal = () => {
     >
       <Paper
         elevation={2}
-        className="flex flex-col outline-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded w-11/12 max-w-[60em] h-[80vh] overflow-y-auto"
+        className="overflow-x-hidden flex flex-col outline-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded w-11/12 max-w-[60em] h-[80vh] overflow-y-auto"
       >
         <ModalPage>{pages[paymentStep - 1]}</ModalPage>
       </Paper>

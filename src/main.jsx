@@ -9,6 +9,14 @@ import Cart from "./pages/Cart";
 import CartProvider from "./context/CartContext";
 import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact";
+/* ============ MUI Theme ============ */
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: '"Prompt", sans-serif',
+  },
+});
 
 const router = createHashRouter([
   {
@@ -38,6 +46,8 @@ const router = createHashRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <div className="min-h-screen h-auto">
-    <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </div>
 );

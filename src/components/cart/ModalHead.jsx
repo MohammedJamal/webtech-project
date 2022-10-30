@@ -32,12 +32,12 @@ const ModalHead = () => {
           className="text-xl ml-auto cursor-pointer text-red-600"
         />
       </div>
-      <div className="p-6 pb-4 leading-tight flex justify-between">
+      <div className="p-6 pb-4 leading-tight flex flex-col items-center md:flex-row justify-between space-y-10 md:space-y-0">
         <div>
-          <h2 className="text-bluegrey-dark-2 ">
+          <h2 className="text-bluegrey-dark-2 text-center md:text-left">
             {stepDetail[paymentStep - 1].title}
           </h2>
-          <p className="text-dark-1 text-sm">
+          <p className="text-dark-1 text-sm text-center md:text-left">
             {stepDetail[paymentStep - 1].subTitle}
           </p>
         </div>

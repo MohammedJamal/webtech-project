@@ -133,3 +133,24 @@ export const modalPageOneAnimation = () => {
         ease: "expo.out"
     })
 }
+
+export const modalPageTwoAnimation = () => {
+    const tl = gsap.timeline({});
+
+    tl.from("#credit-card",{
+        xPercent: 100,
+        yPercent:70,
+        rotate:90,
+    }).to("#credit-card",{
+        xPercent: 0,
+        scale:0.95,
+    })
+
+    tl.from(".payment-input", {
+        yPercent: 50,
+        opacity:0,
+        stagger:0.02
+    }, "0")
+
+
+}
