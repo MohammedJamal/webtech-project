@@ -7,7 +7,7 @@ const Navbar = React.lazy(() => import("../components/Navbar"));
 const Layout = () => {
   return (
     <div>
-      <Suspense fallback={<div className="py-12 w-full bg-slate-50" />}>
+      <Suspense fallback={<div className="py-8 w-full bg-slate-50" />}>
         <NavbarProvider>
           <Navbar />
         </NavbarProvider>
