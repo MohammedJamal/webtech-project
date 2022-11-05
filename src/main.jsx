@@ -6,9 +6,12 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 /* ============ pages ============ */
 import Landing from "./pages/Landing";
 import Cart from "./pages/Cart";
-import CartProvider from "./context/CartContext";
 import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact";
+import CarBrand from "./pages/CarBrand";
+/* ============ Contexts ============= */
+import CartProvider from "./context/CartContext";
+import CarBrandProvider from "./context/CarBrandContext";
 /* ============ MUI Theme ============ */
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
@@ -25,7 +28,7 @@ const router = createHashRouter([
     errorElement: <NotFound />,
     children: [
       {
-        path: "/",
+        index: true,
         element: <Landing />,
       },
       {
@@ -39,6 +42,14 @@ const router = createHashRouter([
       {
         path: "contact",
         element: <Contact />,
+      },
+      {
+        path: ":carbrand",
+        element: (
+          <CarBrandProvider>
+            <CarBrand />
+          </CarBrandProvider>
+        ),
       },
     ],
   },
