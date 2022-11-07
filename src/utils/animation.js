@@ -48,7 +48,7 @@ export const navbarAnimation = () => {
         x: 0,
     }).to("#sub-navigator", {
         opacity: 1,
-        duration: 0.5
+        duration: 0.1
     }, "<").fromTo(".carlist-animation", {
         opacity: 0,
         x: 20,
@@ -56,6 +56,7 @@ export const navbarAnimation = () => {
         stagger: 0.01,
         opacity: 1,
         x: 0,
+        duration: 0.1
     }, "<")
 
     smallSizeTl.fromTo("#sub-navigator", {

@@ -14,6 +14,8 @@ import CartProvider from "./context/CartContext";
 import CarBrandProvider from "./context/CarBrandContext";
 /* ============ MUI Theme ============ */
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+/* ============== utils ============== */
+import getModelsFromBrand, { getModelsList } from "./utils/getModelsFromBrand";
 
 const theme = createTheme({
   typography: {
@@ -45,6 +47,13 @@ const router = createHashRouter([
       },
       {
         path: ":carbrand",
+        loader: async ({ params: { carbrand } }) => {
+          if (!getModelsList().includes(carbrand)) {
+            throw new Response("Not Found", { status: 404 });
+          }
+
+          return { brand: carbrand, models: getModelsFromBrand(carbrand) };
+        },
         element: (
           <CarBrandProvider>
             <CarBrand />

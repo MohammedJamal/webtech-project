@@ -1,62 +1,32 @@
 import React from "react";
+import { getModelDetail } from "../../utils/getModelsFromBrand";
 
-const Content = () => {
+const Content = ({ brand, models }) => {
   return (
-    <div className="bg-red-200 w-full min-h-[200vh]">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
-        nostrum nihil aliquid veritatis, aspernatur harum, dolore assumenda ex
-        natus veniam vel molestiae suscipit nulla! Amet placeat beatae laborum
-        obcaecati inventore, enim aliquid ullam! Quisquam ipsum neque debitis
-        corrupti placeat, libero vel deserunt error natus soluta quaerat quis,
-        veritatis voluptatum ratione dolor fugiat aliquid. Cumque mollitia
-        repellendus praesentium qui beatae corporis sit fugiat, eaque quam
-        sapiente eveniet delectus soluta aperiam laudantium odio nesciunt,
-        dolores quasi fugit et minus. Sit qui saepe minus magni sapiente ducimus
-        corporis, nisi velit asperiores ex temporibus repellat molestiae labore
-        ipsam sunt assumenda id consectetur nesciunt est fugit, vero ea.
-        Provident voluptatem consectetur pariatur numquam molestias ipsam
-        laborum fuga saepe assumenda minima necessitatibus eius voluptatum
-        repellat ut nulla repellendus atque rerum explicabo, odit praesentium.
-        Debitis recusandae porro id vitae? Excepturi officia cum commodi
-        veritatis, dolorem quae. Tenetur nam quos debitis voluptatibus
-        exercitationem reiciendis veritatis voluptate a recusandae ea, esse
-        molestiae ex dolores! Molestias soluta doloremque ullam mollitia
-        cupiditate eius reprehenderit, voluptatem assumenda sed perspiciatis
-        neque consequatur quibusdam eaque ab velit, veniam optio pariatur quasi?
-        Impedit culpa qui quis earum temporibus voluptatem eligendi ullam, quae
-        delectus veritatis vel! Itaque, quibusdam ipsam voluptas provident illum
-        repellendus! Dolores, modi voluptatum!
-
-        oluta doloremque ullam mollitia
-        cupiditate eius reprehenderit, voluptatem assumenda sed perspiciatis
-        neque consequatur quibusdam eaque ab velit, veniam optio pariatur quasi?
-        Impedit culpa qui quis earum temporibus voluptatem eligendi ullam, quae
-        delectus veritatis vel! Itaque, quibusdam ipsam voluptas provident illum
-        repellendus! Dolores, modi voluptatum!
-        oluta doloremque ullam mollitia
-        cupiditate eius reprehenderit, voluptatem assumenda sed perspiciatis
-        neque consequatur quibusdam eaque ab velit, veniam optio pariatur quasi?
-        Impedit culpa qui quis earum temporibus voluptatem eligendi ullam, quae
-        delectus veritatis vel! Itaque, quibusdam ipsam voluptas provident illum
-        repellendus! Dolores, modi voluptatum!
-
-        oluta doloremque ullam mollitia
-        cupiditate eius reprehenderit, voluptatem assumenda sed perspiciatis
-        neque consequatur quibusdam eaque ab velit, veniam optio pariatur quasi?
-        Impedit culpa qui quis earum temporibus voluptatem eligendi ullam, quae
-        delectus veritatis vel! Itaque, quibusdam ipsam voluptas provident illum
-        repellendus! Dolores, modi voluptatum!
-
-        oluta doloremque ullam mollitia
-        cupiditate eius reprehenderit, voluptatem assumenda sed perspiciatis
-        neque consequatur quibusdam eaque ab velit, veniam optio pariatur quasi?
-        Impedit culpa qui quis earum temporibus voluptatem eligendi ullam, quae
-        delectus veritatis vel! Itaque, quibusdam ipsam voluptas provident illum
-        repellendus! Dolores, modi voluptatum!
-      </p>
+    <div className=" w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-4 content-start">
+      {getModelDetail(brand).map((model) => {
+        const carsOnEachModel = Object.keys(model.cars).map(
+          (key) => model.cars[key]
+        ); // เรามีชื่อ model อยู่ที่มาจากแต่ละ brand ทำการ หาว่าแล้วใน model นี้มีรถยีรุ่นไหนที่แตกย่อยลงมาอีกบ้าง
+        
+        
+        return carsOnEachModel.map((car) => {
+          return <EachModelContent key={car.name} {...car} modelName={model.modelName}/>;
+        });
+      })}
     </div>
   );
 };
 
-export default Content;
+const EachModelContent = (props) => {
+  console.log(props)
+
+  return (
+    <div className="bg-lighten-3/80 p-2 rounded-sm">
+      <div className="w-full aspect-square bg-lighten-2 rounded"></div>
+      <div>asd</div>
+    </div>
+  );
+};
+
+export default React.memo(Content);

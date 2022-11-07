@@ -1,7 +1,17 @@
 import { HiChevronLeft } from "react-icons/hi";
-import carType from "../../assets/carType.json";
- // ประเภทรถที่จะ render
+/* ============== Website's car data ============== */
+import websiteData from "../../assets/websiteData.json";
+/* ============== React router ============== */
+import { useNavigate } from "react-router-dom";
+/* ============== utils ============== */
+import getModelsFromBrand, {
+  getModelsList,
+} from "../../utils/getModelsFromBrand";
+
+// ประเภทรถที่จะ render
 const SubNavigator = () => {
+  const navigate = useNavigate();
+
   return (
     <li
       id="sub-navigator"
@@ -18,19 +28,22 @@ const SubNavigator = () => {
         </div>
         <hr className="my-4" />
       </div>
-      <div className="flex w-full max-w-[70em] justify-center flex-col md:flex-row flex-wrap">
-        {carType.map((item) => {
+      <div className="flex w-full max-w-[70em] justify-start flex-col md:flex-row flex-wrap">
+        {getModelsList().map((carbrand) => {
           return (
-            <div key={item} className="p-2 w-full md:w-[20%]">
-              <h4 className="carlist-animation font-medium">{item}</h4>
+            <div key={carbrand} className="p-2 w-full md:w-[20%]">
+              <h4
+                onClick={() => navigate(`/${carbrand}`)}
+                className="cursor-pointer hover:decoration-blue-500 decoration-transparent underline underline-offset-2 decoration-2  carlist-animation font-medium duration-200"
+              >
+                {carbrand}
+              </h4>
               <ul className="text-sm text-bluegrey-light-2">
-                <li className="carlist-animation">xxxx-yyyy</li>
-                <li className="carlist-animation">xxxx-yyyy</li>
-                <li className="carlist-animation">xxxx-yyyy</li>
-                <li className="carlist-animation">xxxx-yyyy</li>
-                <li className="carlist-animation">xxxx-yyyy</li>
-                <li className="carlist-animation">xxxx-yyyy</li>
-                <li className="carlist-animation">xxxx-yyyy</li>
+                {getModelsFromBrand(carbrand).map((model) => (
+                  <li key={model} className="carlist-animation">
+                    {model}
+                  </li>
+                ))}
               </ul>
             </div>
           );
