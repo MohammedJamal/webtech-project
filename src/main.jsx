@@ -13,6 +13,7 @@ import Car from "./pages/Car";
 /* ============ Contexts ============= */
 import CartProvider from "./context/CartContext";
 import CarBrandProvider from "./context/CarBrandContext";
+import CarDetailProvider from "./context/CarDetailContext";
 /* ============ MUI Theme ============ */
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 /* ============== utils ============== */
@@ -63,8 +64,12 @@ const router = createHashRouter([
       },
       {
         path: ":carbrand/:car",
-        element: <Car/>
-      }
+        element: (
+          <CarDetailProvider>
+            <Car />
+          </CarDetailProvider>
+        ),
+      },
     ],
   },
 ]);

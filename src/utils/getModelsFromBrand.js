@@ -17,13 +17,30 @@ export const getModelDetail = (carbrand) => {
 }
 
 export const getEachCarDetail = (carbrand, car) => {
-    return(
+    return (
         getModelDetail(carbrand).map(model => {
             return Object.keys(model.cars).map(eachCarInModel => {
                 return model.cars[eachCarInModel]
             }).find(x => x.name == car)
         }).find(final => final)
     )
+}
+
+export const getCarBrandLogo = (carbrand) => {
+
+    const brandMapper = {
+        "Porsche": "porsche.png",
+        "ferrari": "ferrari.png",
+        "lamborghini": "Lamborghini.jpg",
+        "maserati": "maserati.png",
+        "mercedes-Benz": "benz.png",
+        "bentley": "bentley.png",
+        "audi": "audi.jpg",
+        "astonMartin": "astonmartin.png",
+        "tesla": "tesla.png"
+    }
+
+    return brandMapper[carbrand]
 }
 
 export default getModelsFromBrand;

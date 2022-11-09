@@ -1,25 +1,22 @@
-import React , {useEffect} from 'react'
-import { useLocation , useParams} from 'react-router-dom'
+import React, { useEffect, useState, useContext } from "react";
+import { useLocation, useParams } from "react-router-dom";
 /* ============== Components & Layouts ============== */
+import Header from "../components/car/Header";
+import CarTabs from "../layouts/car/CarTabs";
+/* ============== Context ============== */
+import { CarDetailContext } from "../context/CarDetailContext";
 
-import {getEachCarDetail} from "../utils/getModelsFromBrand"
 const Car = () => {
-  const {carbrand, car} = useParams();
-
-  useEffect(() => {
-    console.log(getEachCarDetail(carbrand, car))
-  }, [])
+  const [carDetail, setCarDetail] = useContext(CarDetailContext);
+  
 
   return (
-    <>
-      <div className="grid grid-cols-3 gap-2 p-6 lg:max-w-[60em] mx-auto">
-        <div className="col-span-3 h-56 bg-lighten-1 rounded"></div>
-        <div className="aspect-square bg-lighten-1 rounded"></div>
-        <div className="aspect-square bg-lighten-1 rounded"></div>
-        <div className="aspect-square bg-lighten-1 rounded"></div>
-      </div>
-    </>
-  )
-}
+    <div className="p-6 pt-12 lg:max-w-[60em] mx-auto">
+      <Header  />
+      <hr className="mb-4" />
+      <CarTabs />
+    </div>
+  );
+};
 
-export default Car
+export default Car;
