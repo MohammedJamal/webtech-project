@@ -9,6 +9,7 @@ import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact";
 import CarBrand from "./pages/CarBrand";
+import Car from "./pages/Car";
 /* ============ Contexts ============= */
 import CartProvider from "./context/CartContext";
 import CarBrandProvider from "./context/CarBrandContext";
@@ -60,6 +61,10 @@ const router = createHashRouter([
           </CarBrandProvider>
         ),
       },
+      {
+        path: ":carbrand/:car",
+        element: <Car/>
+      }
     ],
   },
 ]);
