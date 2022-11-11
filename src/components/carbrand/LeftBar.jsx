@@ -7,7 +7,7 @@ import getModelsFromBrand from "../../utils/getModelsFromBrand";
 const LeftBar = () => {
   const {carbrand} = useParams()
   const [carBrandState, setCarBrandState] = useContext(CarBrandContext);
-  console.log(carbrand)
+  
   return (
     <div className={`custom-scrollbar bg-white pl-0 p-4 sticky top-28 max-w-[15em] h-[85vh] overflow-y-auto`}>
       <h3>LeftBar</h3>

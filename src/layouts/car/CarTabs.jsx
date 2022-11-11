@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 /* ============== Components & Layouts ============== */
+import CarDetail from "../../components/Car/tabs/CarDetail";
 import Gallery from "../../components/car/tabs/Gallery";
 
 const CarTabs = () => {
@@ -13,7 +14,7 @@ const CarTabs = () => {
 
   return (
     <div>
-      <div className="mb-2">
+      <div className="mb-6">
         <Tabs value={tab} onChange={changeTab} aria-label="basic tabs example">
           <Tab label="รายละเอียด" />
           <Tab label="รูปภาพเพิ่มเติม" />
@@ -21,7 +22,7 @@ const CarTabs = () => {
         </Tabs>
       </div>
       <TabPanel value={tab} index={0}>
-        Item One
+        <CarDetail />
       </TabPanel>
       <TabPanel value={tab} index={1}>
         <Gallery />

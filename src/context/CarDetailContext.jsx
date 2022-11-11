@@ -8,13 +8,8 @@ export const CarDetailContext = React.createContext();
 const CarDetailProvider = ({ children }) => {
   const { carbrand, car } = useParams();
 
-  const [carDetail, setCarDetail] = React.useState({
-    detail:{ ...getEachCarDetail(carbrand, car), carbrand},
-    
-  });
-
   return (
-    <CarDetailContext.Provider value={[carDetail, setCarDetail]}>
+    <CarDetailContext.Provider value={{ ...getEachCarDetail(carbrand, car), carbrand:carbrand}}>
       {children}
     </CarDetailContext.Provider>
   );
