@@ -13,8 +13,6 @@ const CarCard = (props) => {
   const imageURL = `car-images/${brand}/${modelName}/${name}`.replaceAll(" ", "_");
   const imgFileType = getEachCarDetail(brand, name).srcImg[0]
 
-  console.log( imageURL + "/" + imgFileType)
-
   // We need t combined imageURL with imageFielType
 
   const navigateToCar = () => {

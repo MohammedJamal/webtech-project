@@ -2293,7 +2293,7 @@
             "combined": "16.4 l/ 100km",
             "Wheelbase": 2720,
             "srcImg": [
-              "1.jpg",
+              "1.png",
               "2.jpg",
               "3.jpg",
               "4.jpg",
@@ -7143,8 +7143,8 @@
             "combined": "11.6 l/100km",
             "Wheelbase": 2929,
             "srcImg": [
-              "1.jfif",
-              "2.jpg",
+              "1.jpg",
+              "2.jfif",
               "3.jfif",
               "4.jpg",
               "5.jpg"
@@ -7496,9 +7496,9 @@
             "combined": "9.0 l/100km",
             "Wheelbase": 2680,
             "srcImg": [
-              "1.jfif",
+              "1.jpg",
               "2.jpg",
-              "3.jpg",
+              "3.jfif",
               "4.jpg",
               "5.jpg"
             ],
@@ -8236,9 +8236,9 @@
             "combined": "11.9 l/100km",
             "Wheelbase": 2804,
             "srcImg": [
-              "1.jfif",
+              "1.jpg",
               "2.jpg",
-              "3.jpg",
+              "3.jfif",
               "4.jfif",
               "5.jpg"
             ],
@@ -8407,8 +8407,8 @@
             "combined": "5.2 l/100km",
             "Wheelbase": 2805,
             "srcImg": [
-              "1.jfif",
-              "2.jpeg",
+              "1.jpeg",
+              "2.jfif",
               "3.png",
               "4.jpg",
               "5.jpg"
@@ -8475,51 +8475,6 @@
       {
         "Valkyrie": {
           "car1": {
-            "name": "Coupe",
-            "topspeed": 402,
-            "powerKW": 746,
-            "powerPS": 1155,
-            "Acceleration": 2.5,
-            "combined": "13.2 l/100km",
-            "Wheelbase": 2628,
-            "srcImg": [
-              "1.jpg",
-              "2.jfif",
-              "3.jpg",
-              "4.jpg",
-              "5.jpg"
-            ],
-            "stores": [
-              {
-                "name": "ZSS motor",
-                "services": [
-                  "อาหารและเครื่องดื่มบริการ",
-                  "บริการทำเล็บ",
-                  "บริการนวดผ่อนคลาย",
-                  "บริการให้คำปรึกษา",
-                  "บริการตกแต่งรถตามความต้องการ"
-                ],
-                "stars": 3,
-                "price": 82800000.0,
-                "monthlyPaymentRate": 2300000,
-                "interest": 0.3
-              },
-              {
-                "name": "มากะมาชิดะ มอเตอร์",
-                "services": [
-                  "เครื่องดื่มรีฟิลและ อาหารสำหรับแขก",
-                  "บริการนวดผ่อนคลาย",
-                  "แชมเปญ",
-                  "รถรับส่งฟรีในระยะทาง 20 กิโลเมตรแรก"
-                ],
-                "stars": 4,
-                "price": 82500000.0,
-                "monthlyPaymentRate": 2291666,
-                "interest": 0.5
-              }
-            ]
-          },
-          "car2": {
             "name": "AMR Pro",
             "topspeed": 402,
             "powerKW": 865,
@@ -8667,8 +8622,8 @@
             "combined": "358 mi",
             "Wheelbase": 2875,
             "srcImg": [
-              "1.jpg",
-              "2.png",
+              "1.png",
+              "2.jpg",
               "3.jpg",
               "4.jpg",
               "5.jpg"

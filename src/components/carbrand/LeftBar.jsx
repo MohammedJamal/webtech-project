@@ -2,7 +2,7 @@ import React , {useContext} from "react";
 import { useParams } from "react-router-dom";
 import { CarBrandContext } from "../../context/CarBrandContext";
 /* ================ utils ================ */
-import getModelsFromBrand from "../../utils/getModelsFromBrand";
+import { getEveryCarAndModelInBrand } from "../../utils/getModelsFromBrand";
 
 const LeftBar = () => {
   const {carbrand} = useParams()

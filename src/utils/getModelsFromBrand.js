@@ -10,9 +10,19 @@ export const getModelsList = () => {
     return Object.keys(websiteData)
 };
 
-export const getModelDetail = (carbrand) => {
+/* 🚨 Doesn't use only internal use case only 🚨 */
+const getModelDetail = (carbrand) => {
     return websiteData[carbrand].model.map(model => {
         return { modelName: Object.keys(model)[0], cars: model[Object.keys(model)] }
+    })
+}
+
+export const getEveryCarAndModelInBrand = (carbrand) => {
+    return getModelDetail(carbrand).map((model) => {
+        const carsOnEachModel = Object.keys(model.cars).map(
+            (key) => model.cars[key]
+        ); // เรามีชื่อ model อยู่ที่มาจากแต่ละ brand ทำการ หาว่าแล้วใน model นี้มีรถยีรุ่นไหนที่แตกย่อยลงมาอีกบ้าง
+        return { modelName: model.modelName, carsOnEachModel }
     })
 }
 
@@ -41,6 +51,19 @@ export const getCarBrandLogo = (carbrand) => {
     }
 
     return brandMapper[carbrand]
+}
+
+// get only URL but doesn't contain image file
+export const getImageURL = (carbrand, modelName, carName) => {
+    return `car-images/${carbrand}/${modelName}/${carName}`.replaceAll(" ", "_");
+}
+
+// Get image type for image
+export const getImgageFileType = (carbrand, carName, index) => getEachCarDetail(carbrand, carName).srcImg[index]
+
+// We need to combined imageURL with imageFielType
+export const getCarImage = (carbrand, modelName, carName, imageIndex) => {
+    return getImageURL(carbrand, modelName, carName) + "/" + getImgageFileType(carbrand, carName, imageIndex)
 }
 
 export default getModelsFromBrand;
