@@ -1,7 +1,7 @@
-import React, {  useContext } from "react";
+import React, {  Suspense, useContext } from "react";
 /* ============== Components & Layouts ============== */
 import Header from "../components/car/Header";
-import CarTabs from "../layouts/car/CarTabs";
+const CarTabs = React.lazy(() => import("../layouts/car/CarTabs"));
 /* ============== Context ============== */
 import { CarDetailContext } from "../context/CarDetailContext";
 
@@ -12,7 +12,9 @@ const Car = () => {
     <div className="p-6 pt-12 lg:max-w-[50em] mx-auto pb-24">
       <Header  />
       <hr className="mb-4" />
-      <CarTabs />
+      <Suspense fallback={<div>Loading...</div>}>
+        <CarTabs />
+      </Suspense>
     </div>
   );
 };
