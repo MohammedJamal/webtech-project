@@ -4,7 +4,7 @@ import { CarDetailContext } from "../../../context/CarDetailContext";
 
 const CarDetail = () => {
   const carDetail = useContext(CarDetailContext);
-  console.log(carDetail);
+  
   const listDisplay = [
     {
       name:"Acceleration",

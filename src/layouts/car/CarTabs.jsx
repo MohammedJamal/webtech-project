@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 /* ============== Components & Layouts ============== */
-import CarDetail from "../../components/Car/tabs/CarDetail";
+import CarDetail from "../../components/Car/tabs/CarDetail.jsx";
 import Gallery from "../../components/car/tabs/Gallery";
 
 const CarTabs = () => {
