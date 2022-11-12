@@ -31,11 +31,7 @@ const Gallery = ({ children }) => {
         640: {
           slidesPerView: 3,
           spaceBetween: 20,
-        },
-        1020: {
-          slidesPerView: 4,
-          spaceBetween: 20,
-        },
+        }
       }}
     >
       {children}

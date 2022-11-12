@@ -45,7 +45,7 @@ const StepIcon = (props) => {
   );
 };
 
-const stepTitle = ["Payment method", "Payment detail", "Confirmation"];
+const stepTitle = ["เลือกวิธีการชำระ", "รายละเอียดการชำระ", "ยืนยันรายการ"];
 
 const StepperProgress = () => {
   const [cartState, setCartState] = useContext(CartContext);

@@ -6,9 +6,24 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 /* ============ pages ============ */
 import Landing from "./pages/Landing";
 import Cart from "./pages/Cart";
-import CartProvider from "./context/CartContext";
 import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact";
+import CarBrand from "./pages/CarBrand";
+import Car from "./pages/Car";
+/* ============ Contexts ============= */
+import CartProvider from "./context/CartContext";
+import CarBrandProvider from "./context/CarBrandContext";
+import CarDetailProvider from "./context/CarDetailContext";
+/* ============ MUI Theme ============ */
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+/* ============== utils ============== */
+import getModelsFromBrand, { getModelsList } from "./utils/getModelsFromBrand";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: '"Prompt", sans-serif',
+  },
+});
 
 const router = createHashRouter([
   {
@@ -17,7 +32,7 @@ const router = createHashRouter([
     errorElement: <NotFound />,
     children: [
       {
-        path: "/",
+        index: true,
         element: <Landing />,
       },
       {
@@ -32,12 +47,37 @@ const router = createHashRouter([
         path: "contact",
         element: <Contact />,
       },
+      {
+        path: ":carbrand",
+        loader: async ({ params: { carbrand } }) => {
+          if (!getModelsList().includes(carbrand)) {
+            throw new Response("Not Found", { status: 404 });
+          }
+
+          return { brand: carbrand, models: getModelsFromBrand(carbrand) };
+        },
+        element: (
+          <CarBrandProvider>
+            <CarBrand />
+          </CarBrandProvider>
+        ),
+      },
+      {
+        path: ":carbrand/:car",
+        element: (
+          <CarDetailProvider>
+            <Car />
+          </CarDetailProvider>
+        ),
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <div className="min-h-screen h-auto">
-    <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </div>
 );

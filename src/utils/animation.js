@@ -48,7 +48,7 @@ export const navbarAnimation = () => {
         x: 0,
     }).to("#sub-navigator", {
         opacity: 1,
-        duration: 0.5
+        duration: 0.1
     }, "<").fromTo(".carlist-animation", {
         opacity: 0,
         x: 20,
@@ -56,6 +56,7 @@ export const navbarAnimation = () => {
         stagger: 0.01,
         opacity: 1,
         x: 0,
+        duration: 0.1
     }, "<")
 
     smallSizeTl.fromTo("#sub-navigator", {
@@ -132,4 +133,25 @@ export const modalPageOneAnimation = () => {
         duration: 1,
         ease: "expo.out"
     })
+}
+
+export const modalPageTwoAnimation = () => {
+    const tl = gsap.timeline({});
+
+    tl.from("#credit-card",{
+        xPercent: 100,
+        yPercent:70,
+        rotate:90,
+    }).to("#credit-card",{
+        xPercent: 0,
+        scale:0.95,
+    })
+
+    tl.from(".payment-input", {
+        yPercent: 50,
+        opacity:0,
+        stagger:0.02
+    }, "0")
+
+
 }
