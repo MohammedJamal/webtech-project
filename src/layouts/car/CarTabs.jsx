@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 /* ============== Components & Layouts ============== */
-import CarDetail from "../../components/Car/tabs/CarDetail.jsx";
+// import CarDetail from "../../components/Car/tabs/CarDetail.jsx";
 import Gallery from "../../components/car/tabs/Gallery";
 
 const CarTabs = () => {
@@ -22,7 +22,8 @@ const CarTabs = () => {
         </Tabs>
       </div>
       <TabPanel value={tab} index={0}>
-        <CarDetail />
+        {/* <CarDetail /> */}
+        <div>asd</div>
       </TabPanel>
       <TabPanel value={tab} index={1}>
         <Gallery />
