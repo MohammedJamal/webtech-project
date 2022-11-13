@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 /* ============== utils ============== */
-import { getEachCarDetail } from "../utils/getModelsFromBrand";
+import { getEachCarDetail } from "../utils/carMethods";
 
 export const CarDetailContext = React.createContext();
 

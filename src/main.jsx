@@ -12,9 +12,9 @@ import Contact from "./pages/Contact";
 // import Car from "./pages/Car";
 
 const Landing = React.lazy(() => import("./pages/Landing"));
-const Cart = React.lazy(() => import("./pages/Cart"))
-const Car = React.lazy(() => import("./pages/Car"))
-const CarBrand = React.lazy(() => import("./pages/CarBrand"))
+const Cart = React.lazy(() => import("./pages/Cart"));
+const Car = React.lazy(() => import("./pages/Car"));
+const CarBrand = React.lazy(() => import("./pages/CarBrand"));
 
 /* ============ Contexts ============= */
 import CartProvider from "./context/CartContext";
@@ -23,7 +23,7 @@ import CarDetailProvider from "./context/CarDetailContext";
 /* ============ MUI Theme ============ */
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 /* ============== utils ============== */
-import getModelsFromBrand, { getModelsList } from "./utils/getModelsFromBrand";
+import { getModelsFromBrand, getBrandsList } from "./utils/carMethods";
 
 const theme = createTheme({
   typography: {
@@ -35,7 +35,13 @@ const router = createHashRouter([
   {
     path: "/",
     element: (
-      <Suspense fallback={<div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 text-lg font-medium text-lighten-1">Loading...</div>}>
+      <Suspense
+        fallback={
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 text-lg font-medium text-lighten-1">
+            Loading...
+          </div>
+        }
+      >
         <Layout />
       </Suspense>
     ), // All page will render as children of Layout
@@ -60,7 +66,7 @@ const router = createHashRouter([
       {
         path: ":carbrand",
         loader: async ({ params: { carbrand } }) => {
-          if (!getModelsList().includes(carbrand)) {
+          if (!getBrandsList().includes(carbrand)) {
             throw new Response("Not Found", { status: 404 });
           }
 

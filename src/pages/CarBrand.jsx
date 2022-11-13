@@ -10,14 +10,12 @@ import { CarBrandContext } from "../context/CarBrandContext";
 
 const CarBrand = () => {
   const car = useLoaderData();
-  const [carBrandState, setCarBrandState] = useContext(CarBrandContext);
-  const { isToggleSideBar } = carBrandState;
 
   return (
     <>
       <TopBar {...car} />
       <div className="flex px-6 max-w-[screen] ">
-        {isToggleSideBar && <LeftBar {...car} />}
+        <LeftBar {...car} />
         <Content {...car} />
       </div>
     </>

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 /* ============= utils ============= */
 import commafy from "../../utils/commafy";
-import { getCarImage } from "../../utils/getModelsFromBrand";
+import { getCarImage } from "../../utils/carMethods";
 
 const CarCard = (props) => {
   const navigate = useNavigate();
