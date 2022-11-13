@@ -1,10 +1,15 @@
 import React, { useContext } from "react";
 /* ============ context ============ */
 import { CarDetailContext } from "../../../context/CarDetailContext";
+/* ============ utils ============ */
+import {getCarImage , getModelFromCarName} from "../../../utils/carMethods"
 
 const Detail = () => {
   const carDetail = useContext(CarDetailContext);
-  console.log(carDetail)
+  
+  const {carbrand, name} = carDetail;
+  const modelName = getModelFromCarName(carbrand, name)
+
   const listDisplay = [
     {
       name: "Acceleration",
@@ -34,12 +39,11 @@ const Detail = () => {
   return (
     <>
       <div className="">
-        <div className="w-full h-96 bg-lighten-2 rounded" />
+        <img src={getCarImage(carbrand, modelName,name, 0)} alt={name} className="w-full rounded-xl"/> 
         <div className="mt-8 ">
           <h2>
-            <span className="py-0 px-2   bg-blue-50 rounded-lg text-blue-500">
-              {carDetail.carbrand[0].toUpperCase() +
-                carDetail.carbrand.slice(1).toLowerCase()}
+            <span className="py-0 px-2 bg-blue-50 rounded-lg text-blue-500">
+              {carDetail.carbrand[0].toUpperCase() + carDetail.carbrand.slice(1).toLowerCase()}
             </span>
             <span className="text-bluegrey-dark-2"> {carDetail.name}</span>
           </h2>

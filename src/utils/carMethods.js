@@ -39,6 +39,15 @@ export const getEachCarDetail = (carbrand, car) => {
     )
 }
 
+/* Get model of specific carname */
+export const getModelFromCarName = (carbrand, carName) => {
+    return getEveryCarAndModelInBrand(carbrand).find(model => {
+        if (model.carsOnEachModel.map(model => model.name).includes(carName)) {
+            return true
+        }
+    }).modelName
+}
+
 export const getCarBrandLogo = (carbrand) => {
 
     const brandMapper = {
