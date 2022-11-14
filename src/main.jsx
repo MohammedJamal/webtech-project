@@ -4,13 +4,9 @@ import "./index.css";
 import Layout from "./layouts/Layout";
 import { createHashRouter, RouterProvider } from "react-router-dom";
 /* ============ pages ============ */
-// import Landing from "./pages/Landing";
-// import Cart from "./pages/Cart";
+
 import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact";
-// import CarBrand from "./pages/CarBrand";
-// import Car from "./pages/Car";
-
 const Landing = React.lazy(() => import("./pages/Landing"));
 const Cart = React.lazy(() => import("./pages/Cart"));
 const Car = React.lazy(() => import("./pages/Car"));
@@ -20,6 +16,7 @@ const CarBrand = React.lazy(() => import("./pages/CarBrand"));
 import CartProvider from "./context/CartContext";
 import CarBrandProvider from "./context/CarBrandContext";
 import CarDetailProvider from "./context/CarDetailContext";
+import ShopProvider from "./context/ShopContext";
 /* ============ MUI Theme ============ */
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 /* ============== utils ============== */
@@ -81,9 +78,11 @@ const router = createHashRouter([
       {
         path: ":carbrand/:car",
         element: (
-          <CarDetailProvider>
-            <Car />
-          </CarDetailProvider>
+          <ShopProvider>
+            <CarDetailProvider>
+              <Car />
+            </CarDetailProvider>
+          </ShopProvider>
         ),
       },
     ],

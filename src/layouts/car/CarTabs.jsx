@@ -4,6 +4,7 @@ import Tab from "@mui/material/Tab";
 /* ============== Components & Layouts ============== */
 import Gallery from "../../components/car/tabs/Gallery";
 import Detail from "../../components/car/tabs/Detail";
+import Stores from "../../components/car/tabs/Stores";
 
 const CarTabs = () => {
   const [tab, setTab] = useState(0);
@@ -28,7 +29,7 @@ const CarTabs = () => {
         <Gallery />
       </TabPanel>
       <TabPanel value={tab} index={2}>
-        Item Three
+        <Stores/>
       </TabPanel>
     </div>
   );

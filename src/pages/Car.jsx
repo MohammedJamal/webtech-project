@@ -2,8 +2,9 @@ import React, {  Suspense, useContext } from "react";
 /* ============== Components & Layouts ============== */
 import Header from "../components/car/Header";
 const CarTabs = React.lazy(() => import("../layouts/car/CarTabs"));
+import CarModal from "../components/car/CarModal"
 /* ============== Context ============== */
-import { CarDetailContext } from "../context/CarDetailContext";
+import { ShopContext } from "../context/ShopContext";
 
 const Car = () => {
 
@@ -14,6 +15,7 @@ const Car = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <CarTabs />
       </Suspense>
+      <CarModal /> {/* Modal */}
     </div>
   );
 };

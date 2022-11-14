@@ -12,7 +12,7 @@ const TopBar = ({ brand, models }) => {
   return (
     <div className="sticky z-10 top-12 left-0 flex justify-between p-6 pb-2 bg-white">
       <p className="text-[#546E7A] text-lg font-medium">
-        {brand || "-"} ({models.length})
+        {brand || "-"} ({models.length} models)
       </p>
       <ButtonBase
         onClick={toggle}
