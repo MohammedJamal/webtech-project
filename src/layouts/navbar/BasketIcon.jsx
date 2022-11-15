@@ -4,7 +4,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import Badge from "@mui/material/Badge";
 import IconButton from '@mui/material/IconButton';
 /* ============ utils ============ */
-import {getFromLocalStorage} from "../../utils/localStorage";
+import { getFromLocalStorage } from "../../utils/localstorage";
 
 const BasketIcon = () => {
   const navigate = useNavigate();
