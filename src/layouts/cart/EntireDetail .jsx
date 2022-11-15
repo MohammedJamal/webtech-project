@@ -1,9 +1,9 @@
 import React from "react";
-
 /* ================== Import layouts from same level ================== */
 import ToolTipHeader from "./ToolTipHeader";
 import BookingDetail from "./BookingDetail";
 import ReservePrice from "./ReservePrice";
+
 
 const EntireDetail = () => {
   return (

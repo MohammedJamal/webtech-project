@@ -11,7 +11,6 @@ const Landing = React.lazy(() => import("./pages/Landing"));
 const Cart = React.lazy(() => import("./pages/Cart"));
 const Car = React.lazy(() => import("./pages/Car"));
 const CarBrand = React.lazy(() => import("./pages/CarBrand"));
-
 /* ============ Contexts ============= */
 import CartProvider from "./context/CartContext";
 import CarBrandProvider from "./context/CarBrandContext";
@@ -21,6 +20,9 @@ import ShopProvider from "./context/ShopContext";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 /* ============== utils ============== */
 import { getModelsFromBrand, getBrandsList } from "./utils/carMethods";
+/* ============== day.js adapter ============== */
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 const theme = createTheme({
   typography: {
@@ -91,8 +93,10 @@ const router = createHashRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <div className="min-h-screen h-auto">
-    <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </LocalizationProvider>
   </div>
 );

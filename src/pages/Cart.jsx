@@ -1,16 +1,28 @@
-import React, { useContext } from "react";
+import React from "react";
+import {Link} from "react-router-dom";
 import Banner from "../components/Banner";
 import CartModal from "../components/cart/CartModal";
-/* ================== Import context ================== */
-import { CartContext } from "../context/CartContext";
 /* ================== Import layouts ================== */
-import EntireDetail from "../layouts/cart/EntireDetail ";
 import CarBadge from "../layouts/cart/CarBadge";
 import Wrapper from "../layouts/cart/Wrapper";
 import BackToLanding from "../layouts/cart/BackToLanding";
 import PageDescribe from "../layouts/cart/PageDescribe";
+import EntireDetail from "../layouts/cart/EntireDetail ";
+/* ================== utils ================== */
+import { getFromLocalStorage } from "../utils/localstorage";
 
 const Cart = () => {
+  if (!Boolean(getFromLocalStorage("booking"))) {
+    return (
+      <>
+        <Banner />
+        <Wrapper>
+          <h2 className="text-bluegrey-dark-2">ไม่มีรายการคิวที่ได้จองเอาไว้ 😶‍🌫️</h2>
+          <p className="text-bluegrey-light-1">โปรดสั่งจองคิวเพื่อเข้าดูรถยนต์ จากนั้นจึงมายืนยันที่นี่อีกครั้ง</p>
+        </Wrapper>
+      </>
+    );
+  }
 
   return (
     <>

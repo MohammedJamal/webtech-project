@@ -28,14 +28,14 @@ const Stores = () => {
   );
 };
 
-const Store = (props) => {
-  const [shop, setShop] = useContext(ShopContext);
+const Store = (shop) => {
+  const [{setShop}] = useContext(ShopContext);
 
   const storeDetail = [
-    { name: "ราคาขาย", value: props.price },
+    { name: "ราคาขาย", value: shop.price },
     {
       name: "อัตราการชำระต่อเดือน (ยังไม่รวมดอกเบี้ย)",
-      value: props.monthlyPaymentRate,
+      value: shop.monthlyPaymentRate,
     },
     {
       name: (
@@ -49,7 +49,7 @@ const Store = (props) => {
       ),
       value: (
         <>
-          <span>{props.interest}% ต่อเดือน</span>
+          <span>{shop.interest}% ต่อเดือน</span>
           <span className="text-bluegrey-light-3"> (36 เดือน)</span>
         </>
       ),
@@ -59,7 +59,7 @@ const Store = (props) => {
       value: (
         <Accordion>
           <ul>
-            {props.services.map((service, index) => (
+            {shop.services.map((service, index) => (
               <li key={service} className="text-base text-bluegrey-dark-1">
                 - {service}
               </li>
@@ -70,16 +70,16 @@ const Store = (props) => {
     },
   ];
 
-  const openCartModal = () => {
-    shop.setIsModalOpen(true)
+  const openCartModal = (shop) => {
+    setShop(shop); /* Automatically open modal */
   }
 
   return (
     <div className="self-start bg-white rounded-xl shadow p-4">
-      <h3 className="text-sky-600">{props.name}</h3>
+      <h3 className="text-sky-600">{shop.name}</h3>
       <Rating
         name="read-only"
-        value={props.stars}
+        value={shop.stars}
         readOnly
         sx={{ fontSize: "1.2em" }}
       />
@@ -95,7 +95,7 @@ const Store = (props) => {
         ))}
       </ul>
       <ButtonBase
-        onClick={openCartModal}
+        onClick={() => openCartModal(shop)}
         sx={{
           width:"100%",
           padding: "0.5em 1em",
