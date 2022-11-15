@@ -5,7 +5,10 @@ import React from 'react'
 const Contact = () => {
   return (
     <Wrapper>
-        <p>asdasd</p>
+        <h3 className="text-bluegrey-dark-4">สมาชิกกลุ่ม</h3>
+        <ul>
+          <li>นายศุภกร เนตรสุวรรณ 64070108</li>
+        </ul>
     </Wrapper>
   )
 }

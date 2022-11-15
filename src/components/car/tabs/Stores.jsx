@@ -8,7 +8,8 @@ import Accordion from "../Accordion";
 /* ============ MUI ============ */
 import Rating from "@mui/material/Rating";
 import ButtonBase from "@mui/material/ButtonBase";
-
+/* ============ MUI ============ */
+import commafy from "../../../utils/commafy";
 const Stores = () => {
   const carDetail = useContext(CarDetailContext);
   const { stores } = carDetail;
@@ -32,10 +33,10 @@ const Store = (shop) => {
   const [{setShop}] = useContext(ShopContext);
 
   const storeDetail = [
-    { name: "ราคาขาย", value: shop.price },
+    { name: "ราคาขาย", value: commafy(shop.price) },
     {
       name: "อัตราการชำระต่อเดือน (ยังไม่รวมดอกเบี้ย)",
-      value: shop.monthlyPaymentRate,
+      value: commafy(shop.monthlyPaymentRate),
     },
     {
       name: (

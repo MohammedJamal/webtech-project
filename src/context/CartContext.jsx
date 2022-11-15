@@ -19,7 +19,14 @@ const CartProvider = ({ children }) => {
     setIsModalOpen: (state) => {
       if (state === false) {
         // reset payment
-        cartState.setPaymentStep(1);
+        
+        setCartState((prevCartState) => ({
+          ...prevCartState,
+          isModalOpen: state,
+          purchaseDetail:{},
+          paymentStep: 1,
+        }));
+        return;
       }
 
       setCartState((prevCartState) => ({

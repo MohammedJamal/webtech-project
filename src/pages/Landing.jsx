@@ -22,11 +22,6 @@ const Landing = () => {
       <TeslaSection />
       <Wrapper>
         <hr className="my-4 border border-lighten-3" />
-        <GalleryTopic topic="รถยนต์นอกหายากพิเศษ" routePath="/b" />
-        <SuggestGallery />
-      </Wrapper>
-      <Wrapper>
-        <hr className="my-4 border border-lighten-3" />
         <GalleryTopic topic="รถยนต์อื่นๆ ที่เราแนะนำ" routePath="/c" />
         <SuggestGallery />
       </Wrapper>
@@ -50,6 +45,7 @@ const GalleryTopic = ({ topic, routePath }) => (
 );
 
 const TeslaSection = () => {
+  
   return (
     <div id="tesla-section" className="relative mb-24">
       <h2 className="px-6 text-dark-3 mb-6 flex items-center space-x-1">
@@ -116,8 +112,9 @@ const TeslaSection = () => {
           })}
         </ul>
       </div>
-      <button className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-[#D32F2F] text-white px-6 py-2 rounded hover:bg-red-700 duration-100">
-        สั่งจองเดี๋ยวนี้
+
+      <button  className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-[#D32F2F] text-white px-6 py-2 rounded hover:bg-red-700 duration-100">
+        เปิดสั่งจองเร็วๆ นี้
       </button>
     </div>
   );

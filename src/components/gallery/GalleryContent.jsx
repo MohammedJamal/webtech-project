@@ -1,9 +1,13 @@
 import React from "react";
-import { useSwiper } from "swiper/react";
+import { useNavigate } from "react-router-dom";
 
-const Content = ({ imageURL, description, carName, price }) => {
+const Content = ({ imageURL, description, carName, price, carLink }) => {
+  const navigate = useNavigate();
+  const goTo = () => {
+    navigate(carLink)
+  }
   return (
-    <div className="rounded-md overflow-hidden group hover:bg-gray-50 duration-100 cursor-pointer">
+    <div onClick={goTo} className="rounded-md overflow-hidden group hover:bg-gray-50 duration-100 cursor-pointer">
       <img
         src={imageURL}
         alt={carName}
