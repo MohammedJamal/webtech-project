@@ -1,16 +1,22 @@
 import React from "react";
-
 /* ================== Import layouts from same level ================== */
 import ToolTipHeader from "./ToolTipHeader";
 import BookingDetail from "./BookingDetail";
 import ReservePrice from "./ReservePrice";
+/* ================== Utils ================== */
+import { getFromLocalStorage  } from "../../utils/localstorage";
+import commafy from "../../utils/commafy";
+
 
 const EntireDetail = () => {
+  const booking = getFromLocalStorage("booking");
+  const { shop, carDetail, bookingDate } = booking;
+
   return (
     <div className="p-4 md:p-12 bg-white mx-[0.5em] md:mx-[1.5em] w-[calc(100%-1em)] md:w-[calc(100%-3em)] relative -translate-y-32 min-h-[40em] shadow-xl rounded-xl">
       <h3 className="font-normal text-sky-600">ราคาขาย</h3>
       <h2 className="font-semibold text-bluegrey-dark-2 leading-loose">
-        THB 32,050,000
+        THB {commafy(shop.price) || "-"}
       </h2>
       <hr className="my-6" />
       <ToolTipHeader
@@ -20,7 +26,7 @@ const EntireDetail = () => {
       />
 
       <h2 className="font-semibold text-bluegrey-dark-2 leading-loose">
-        THB 890,277
+        THB {commafy(shop.monthlyPaymentRate) || "-"}
       </h2>
       <hr className="my-6" />
       <ToolTipHeader
@@ -29,7 +35,7 @@ const EntireDetail = () => {
       />
 
       <h2 className="font-semibold text-bluegrey-dark-2 leading-loose flex space-x-2">
-        <span>0.5% ต่อเดือน</span>
+        <span>{shop.interest || 0}% ต่อเดือน</span>
         <span className="text-bluegrey-light-3 font-light">(36 เดือน)</span>
       </h2>
       <BookingDetail />

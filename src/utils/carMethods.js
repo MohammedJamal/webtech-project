@@ -1,12 +1,14 @@
 import websiteData from "../assets/websiteData.json"
 
-const getModelsFromBrand = (carbrand) => {
+/* Show every models in that brand Ex. ['ModelS', 'Model3', 'ModelX', 'ModelY']*/
+export const getModelsFromBrand = (carbrand) => {
     return websiteData[carbrand].model.map(
         (model) => Object.keys(model)[0]
     );
 }
 
-export const getModelsList = () => {
+/* Get every cars brand as and Object*/
+export const getBrandsList = () => {
     return Object.keys(websiteData)
 };
 
@@ -17,6 +19,7 @@ const getModelDetail = (carbrand) => {
     })
 }
 
+/* ใช้ในหน้า /:carbrand เพื่อนำข้อมูลทั้งหมดออกมาแบ่งเป็น {modelName:String , carsOnEachModel:[] } */
 export const getEveryCarAndModelInBrand = (carbrand) => {
     return getModelDetail(carbrand).map((model) => {
         const carsOnEachModel = Object.keys(model.cars).map(
@@ -36,6 +39,15 @@ export const getEachCarDetail = (carbrand, car) => {
     )
 }
 
+/* Get model of specific carname */
+export const getModelFromCarName = (carbrand, carName) => {
+    return getEveryCarAndModelInBrand(carbrand).find(model => {
+        if (model.carsOnEachModel.map(model => model.name).includes(carName)) {
+            return true
+        }
+    }).modelName
+}
+
 export const getCarBrandLogo = (carbrand) => {
 
     const brandMapper = {
@@ -53,17 +65,15 @@ export const getCarBrandLogo = (carbrand) => {
     return brandMapper[carbrand]
 }
 
-// get only URL but doesn't contain image file
+// IMG:Step - 1 get only URL but doesn't contain image file
 export const getImageURL = (carbrand, modelName, carName) => {
     return `car-images/${carbrand}/${modelName}/${carName}`.replaceAll(" ", "_");
 }
 
-// Get image type for image
+// IMG:Step - 2 Get image type for image
 export const getImgageFileType = (carbrand, carName, index) => getEachCarDetail(carbrand, carName).srcImg[index]
 
-// We need to combined imageURL with imageFielType
+// IMG:Step - 3 FINAL GET IMAGE! ✨ We'll need to combined imageURL with imageFielType
 export const getCarImage = (carbrand, modelName, carName, imageIndex) => {
     return getImageURL(carbrand, modelName, carName) + "/" + getImgageFileType(carbrand, carName, imageIndex)
 }
-
-export default getModelsFromBrand;

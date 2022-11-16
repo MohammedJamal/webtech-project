@@ -11,20 +11,33 @@ import { CartContext } from "../../../context/CartContext";
 /* ======== MUI ======== */
 import Chip from "@mui/material/Chip";
 import { HiOutlineCalendar, HiOutlineClock } from "react-icons/hi";
+/* ================== Day.js ================== */
+import dayjs from "dayjs";
+/* ================== Utils.js  ================== */
+import dayMapper from "../../../utils/dayMapper";
+import { getFromLocalStorage  } from "../../../utils/localstorage";
 
 const StepThree = () => {
+  const booking = getFromLocalStorage("booking");
+  const { shop, carDetail, bookingDate } = booking;
+
   const [cartState, setCartState] = useContext(CartContext);
-  const { paymentStep, creditCard, setPaymentStep, purchaseDetail } = cartState;
+  const {  setPaymentStep , setIsModalOpen  } = cartState;
 
   const goBack = () => setPaymentStep(2);
   const submit = () => {
-    alert("Done");
+    alert("สั่งจองคิวสำเร็จ");
+    setIsModalOpen(false);
   };
+  
+  const clock = dayjs(bookingDate).format("HH:mm"); // 12:00
+  const day = dayMapper(dayjs(bookingDate).format("dddd")) // วันจันทร์
+  const date = dayjs(bookingDate).format('DD/MM/YYYY') // 01/01/2021
 
   return (
     <div className="relative min-h-full flex justify-between flex-col">
       <div className="flex flex-col space-y-4">
-        <BookupDate />
+        <BookupDate clock={clock} day={day} date={date}/>
         <Contact />
         <Cost />
       </div>
@@ -45,7 +58,7 @@ const StepThree = () => {
   );
 };
 
-const BookupDate = () => {
+const BookupDate = ({day , date , clock}) => {
   return (
     <div className="bg-[#F8F8F9] py-10 px-4 sm:p-4">
       <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row items-center">
@@ -55,14 +68,14 @@ const BookupDate = () => {
           <Chip
             variant="outlined"
             icon={<HiOutlineClock className="text-lg" />}
-            label="12:30"
+            label={clock}
             color="primary"
             sx={{ fontFamily: "'Prompt', sans-serif" }}
           />
           <div className="w-1 h-1 rounded-full bg-blue-500" />
           <Chip
             variant="outlined"
-            label="วันจันทร์ 31/10/2022"
+            label={day + " " + date}
             color="primary"
             sx={{ fontFamily: "'Prompt', sans-serif" }}
           />

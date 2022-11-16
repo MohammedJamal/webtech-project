@@ -4,6 +4,7 @@ import Tab from "@mui/material/Tab";
 /* ============== Components & Layouts ============== */
 import Gallery from "../../components/car/tabs/Gallery";
 import Detail from "../../components/car/tabs/Detail";
+import Stores from "../../components/car/tabs/Stores";
 
 const CarTabs = () => {
   const [tab, setTab] = useState(0);
@@ -18,7 +19,7 @@ const CarTabs = () => {
         <Tabs value={tab} onChange={changeTab} aria-label="basic tabs example">
           <Tab label="รายละเอียด" />
           <Tab label="รูปภาพเพิ่มเติม" />
-          <Tab label="สั่งจองคิวเข้าดู" />
+          <Tab label={<p className="text-sky-600">สั่งจองคิวเยี่ยมชม</p>} />
         </Tabs>
       </div>
       <TabPanel value={tab} index={0}>
@@ -28,7 +29,7 @@ const CarTabs = () => {
         <Gallery />
       </TabPanel>
       <TabPanel value={tab} index={2}>
-        Item Three
+        <Stores/>
       </TabPanel>
     </div>
   );

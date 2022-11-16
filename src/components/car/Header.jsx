@@ -1,6 +1,6 @@
 import React , { useContext } from "react";
 /* ============== utils ============== */
-import { getCarBrandLogo } from "../../utils/getModelsFromBrand";
+import { getCarBrandLogo } from "../../utils/carMethods";
 /* ============== Context ============== */
 import { CarDetailContext } from "../../context/CarDetailContext";
 

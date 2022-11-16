@@ -1,12 +1,11 @@
 import { HiChevronLeft } from "react-icons/hi";
-/* ============== Website's car data ============== */
-import websiteData from "../../assets/websiteData.json";
 /* ============== React router ============== */
 import { useNavigate } from "react-router-dom";
 /* ============== utils ============== */
-import getModelsFromBrand, {
-  getModelsList,
-} from "../../utils/getModelsFromBrand";
+import{
+  getModelsFromBrand,
+  getBrandsList,
+} from "../../utils/carMethods";
 
 // ประเภทรถที่จะ render
 const SubNavigator = () => {
@@ -29,7 +28,7 @@ const SubNavigator = () => {
         <hr className="my-4" />
       </div>
       <div className="flex w-full max-w-[70em] justify-start flex-col md:flex-row flex-wrap">
-        {getModelsList().map((carbrand) => {
+        {getBrandsList().map((carbrand) => {
           return (
             <div key={carbrand} className="p-2 w-full md:w-[20%]">
               <h4

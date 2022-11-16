@@ -1,23 +1,28 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import Layout from "./layouts/Layout";
 import { createHashRouter, RouterProvider } from "react-router-dom";
 /* ============ pages ============ */
-import Landing from "./pages/Landing";
-import Cart from "./pages/Cart";
+
 import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact";
-import CarBrand from "./pages/CarBrand";
-import Car from "./pages/Car";
+const Landing = React.lazy(() => import("./pages/Landing"));
+const Cart = React.lazy(() => import("./pages/Cart"));
+const Car = React.lazy(() => import("./pages/Car"));
+const CarBrand = React.lazy(() => import("./pages/CarBrand"));
 /* ============ Contexts ============= */
 import CartProvider from "./context/CartContext";
 import CarBrandProvider from "./context/CarBrandContext";
 import CarDetailProvider from "./context/CarDetailContext";
+import ShopProvider from "./context/ShopContext";
 /* ============ MUI Theme ============ */
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 /* ============== utils ============== */
-import getModelsFromBrand, { getModelsList } from "./utils/getModelsFromBrand";
+import { getModelsFromBrand, getBrandsList } from "./utils/carMethods";
+/* ============== day.js adapter ============== */
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 const theme = createTheme({
   typography: {
@@ -28,7 +33,17 @@ const theme = createTheme({
 const router = createHashRouter([
   {
     path: "/",
-    element: <Layout />, // All page will render as children of Layout
+    element: (
+      <Suspense
+        fallback={
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 text-lg font-medium text-lighten-1">
+            Loading...
+          </div>
+        }
+      >
+        <Layout />
+      </Suspense>
+    ), // All page will render as children of Layout
     errorElement: <NotFound />,
     children: [
       {
@@ -50,7 +65,7 @@ const router = createHashRouter([
       {
         path: ":carbrand",
         loader: async ({ params: { carbrand } }) => {
-          if (!getModelsList().includes(carbrand)) {
+          if (!getBrandsList().includes(carbrand)) {
             throw new Response("Not Found", { status: 404 });
           }
 
@@ -65,9 +80,11 @@ const router = createHashRouter([
       {
         path: ":carbrand/:car",
         element: (
-          <CarDetailProvider>
-            <Car />
-          </CarDetailProvider>
+          <ShopProvider>
+            <CarDetailProvider>
+              <Car />
+            </CarDetailProvider>
+          </ShopProvider>
         ),
       },
     ],
@@ -76,8 +93,10 @@ const router = createHashRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <div className="min-h-screen h-auto">
-    <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </LocalizationProvider>
   </div>
 );

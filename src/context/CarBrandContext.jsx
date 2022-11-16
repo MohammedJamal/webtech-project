@@ -4,13 +4,36 @@ export const CarBrandContext = React.createContext();
 
 const CarBrandProvider = ({ children }) => {
   const [carBrandState, setCarBrandState] = useState({
-    isToggleSideBar: true,
-    toggleSideBar: () => {
+    isToggleLeftBar: true,
+    toggleLeftBar: () => {
       setCarBrandState((prevCarBrandState) => ({
         ...prevCarBrandState,
-        isToggleSideBar: !prevCarBrandState.isToggleSideBar,
+        isToggleLeftBar: !prevCarBrandState.isToggleLeftBar,
       }));
     },
+    modelsFilter: [],
+    setModelsFilter: (models) => {
+      setCarBrandState((prevCarBrandState) => ({
+        ...prevCarBrandState,
+        modelsFilter: models,
+      }));
+    },
+    removeModelInFilter: (modelToRemove) => {
+      setCarBrandState((prevCarBrandState) => {
+        return {
+          ...prevCarBrandState,
+          modelsFilter: prevCarBrandState.modelsFilter.filter(model => model != modelToRemove)
+        }
+      }) 
+    },
+    addModelInFilter: (modelToAdd) => {
+      setCarBrandState((prevCarBrandState) => {
+        return {
+          ...prevCarBrandState,
+          modelsFilter: [...prevCarBrandState.modelsFilter, modelToAdd]
+        }
+      }) 
+    }
   });
 
   return (

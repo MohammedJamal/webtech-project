@@ -6,8 +6,13 @@ import {
   HiOutlineShieldCheck,
 } from "react-icons/hi";
 import Chip from "@mui/material/Chip";
+/* ================== Day.js ================== */
+import dayjs from "dayjs";
+/* ================== Utils.js  ================== */
+import dayMapper from "../../utils/dayMapper";
+import { getFromLocalStorage  } from "../../utils/localstorage";
 
-const Date = () => (
+const Date = ({clock , date , day}) => (
   <div className="bg-[#F8F8F9] py-10 px-4 sm:p-4">
     <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row items-center">
       <div className="flex space-x-2 self-start">
@@ -18,14 +23,14 @@ const Date = () => (
         <Chip
           variant="outlined"
           icon={<HiOutlineClock className="text-lg" />}
-          label="12:30"
+          label={clock}
           color="primary"
           sx={{ fontFamily: "'Prompt', sans-serif" }}
         />
         <div className="w-1 h-1 rounded-full bg-blue-500" />
         <Chip
           variant="outlined"
-          label="วันจันทร์ 31/10/2022"
+          label={day + " " + date}
           color="primary"
           sx={{ fontFamily: "'Prompt', sans-serif" }}
         />
@@ -34,13 +39,8 @@ const Date = () => (
   </div>
 );
 
-const Service = () => {
-  const services = [
-    "เครื่องดื่มรีฟิลและ อาหารสำหรับแขก",
-    "บริการนวดผ่อนคลาย",
-    "แชมเปญ",
-    "รถรับส่งฟรีในระยะทาง 20 กิโลเมตรแรก",
-  ];
+const Service = ({ services }) => {
+
   return (
     <div className="bg-[#F8F8F9] py-10 px-4 p-4 ">
       <div className="flex space-x-2">
@@ -76,14 +76,21 @@ const VerifyNumber = () => {
 };
 
 const BookingDetail = () => {
+  const booking = getFromLocalStorage("booking");
+  const { shop, carDetail, bookingDate } = booking;
+  
+  const clock = dayjs(bookingDate).format("HH:mm"); // 12:00
+  const day = dayMapper(dayjs(bookingDate).format("dddd")) // วันจันทร์
+  const date = dayjs(bookingDate).format('DD/MM/YYYY') // 01/01/2021
+
   return (
     <div className="relative mt-12 border border-gray-300 rounded p-2 md:p-4">
       <p className="text-gray-500 absolute sm:px-2 bg-white top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
         รายละเอียดการจองคิว
       </p>
       <div className="flex flex-col space-y-2">
-        <Date />
-        <Service />
+        <Date clock={clock} day={day} date={date}/>
+        <Service services={shop.services}/>
         <VerifyNumber />
       </div>
     </div>
