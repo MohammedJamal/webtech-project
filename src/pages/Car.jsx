@@ -3,8 +3,6 @@ import React, {  Suspense, useContext } from "react";
 import Header from "../components/car/Header";
 const CarTabs = React.lazy(() => import("../layouts/car/CarTabs"));
 import CarModal from "../components/car/CarModal"
-/* ============== Context ============== */
-import { ShopContext } from "../context/ShopContext";
 
 const Car = () => {
 
