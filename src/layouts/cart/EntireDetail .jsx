@@ -35,7 +35,7 @@ const EntireDetail = () => {
       />
 
       <h2 className="font-semibold text-bluegrey-dark-2 leading-loose flex space-x-2">
-        <span>{shop.interest || "-"}% ต่อเดือน</span>
+        <span>{shop.interest || 0}% ต่อเดือน</span>
         <span className="text-bluegrey-light-3 font-light">(36 เดือน)</span>
       </h2>
       <BookingDetail />

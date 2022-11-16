@@ -19,7 +19,7 @@ const CarTabs = () => {
         <Tabs value={tab} onChange={changeTab} aria-label="basic tabs example">
           <Tab label="รายละเอียด" />
           <Tab label="รูปภาพเพิ่มเติม" />
-          <Tab label="สั่งจองคิวเข้าดู" />
+          <Tab label={<p className="text-sky-600">สั่งจองคิวเยี่ยมชม</p>} />
         </Tabs>
       </div>
       <TabPanel value={tab} index={0}>
