@@ -8,10 +8,10 @@ const StepOne = () => {
 
   // choose payment provider.
   const cardProviders = [
-    { name: "Visa", imgURL: "/visacard.svg", isEnable: true },
-    { name: "Mastercard", imgURL: "/mastercard.svg", isEnable: true },
-    { name: "American Express", imgURL: "/americancard.svg", isEnable: true },
-    { name: "Paypal", imgURL: "/paypal.png", isEnable: false },
+    { name: "Visa", imgURL: "visacard.svg", isEnable: true },
+    { name: "Mastercard", imgURL: "mastercard.svg", isEnable: true },
+    { name: "American Express", imgURL: "americancard.svg", isEnable: true },
+    { name: "Paypal", imgURL: "paypal.png", isEnable: false },
   ];
 
   return (

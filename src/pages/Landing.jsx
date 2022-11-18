@@ -55,18 +55,18 @@ const TeslaSection = () => {
       <div className="mt-[10em] px-6 relative">
         {/* Tesla car image */}
         <img
-          src="/tesla.png"
+          src="tesla.png"
           alt="tesla"
           id="tesla"
           className="mx-auto mb-12 relative z-10"
         />
         <img
-          src="/tesla-bg-1.png"
+          src="tesla-bg-1.png"
           alt="testla-bg-1"
           className="hidden md:block absolute -top-1/2 left-1/3 -translate-x-20 xl:-translate-x-40"
         />
         <img
-          src="/tesla-bg-2.png"
+          src="tesla-bg-2.png"
           alt="testla-bg-2"
           className="hidden xl:block absolute -top-1/4 right-1/2 translate-x-[35em]"
         />
